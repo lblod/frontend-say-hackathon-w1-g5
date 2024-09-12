@@ -9,7 +9,7 @@ const FORM_GRAPHS = {
 };
 
 const SOURCE_NODE = new NamedNode(
-  'http://ember-submission-form-fields/source-node'
+  'https://inventaris.onroerenderfgoed.be/#Aanvraag1'
 );
 
 const FORM = new Namespace('http://lblod.data.gift/vocabularies/forms/');
@@ -20,7 +20,7 @@ export default class AanvragenNewRoute extends Route {
     const formName = 'new';
     let [formTtl, metaTtl, dataTtl] = await Promise.all([
       fetchForm(formName),
-      fetchFormMeta(formName),
+      fetchFormMeta(formName), 
       fetchFormData(formName),
     ]);
 

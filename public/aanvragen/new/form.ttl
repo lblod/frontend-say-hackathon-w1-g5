@@ -1,136 +1,49 @@
-@prefix form: <http://lblod.data.gift/vocabularies/forms/> .
+@prefix : <#>.
+@prefix form: <http://lblod.data.gift/vocabularies/forms/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
-@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
-@prefix displayTypes: <http://lblod.data.gift/display-types/> .
-@prefix ext: <http://mu.semte.ch/vocabularies/ext/> .
-@prefix schema: <http://schema.org/>.
-@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
-@prefix nie: <http://www.semanticdesktop.org/ontologies/2007/01/19/nie#>.
+@prefix displayTypes: <http://lblod.data.gift/display-types/>.
+@prefix nodes: <http://data.lblod.info/form-data/nodes/>.
+@prefix emb: <http://ember-submission-form-fields/>.
+@prefix ex: <https://inventaris.onroerenderfgoed.be/#>.
 
-##########################################################
-# form
-##########################################################
-ext:form a form:Form, form:TopLevelForm ;
-    form:includes ext:reviewsL;
-    form:includes ext:chaptersL;
-    form:includes ext:bookTitleF.
-
-##########################################################
-#  property-group
-##########################################################
-ext:mainPg a form:PropertyGroup;
-    sh:description "[PROPERTY GROUP] book title";
-    sh:name "[PROPERTY GROUP] book title" ;
-    sh:order 1 .
-
-##########################################################
-#  listing-scope: chapter
-##########################################################
-ext:chapterListingS a form:Scope;
-  sh:path ext:chapter.
-
-##########################################################
-#  Listing: chapter
-##########################################################
-ext:chaptersL a form:Listing;
-  sh:name "[LISTING] Chapters listing";
-  form:each ext:chapterFormItem;
-  form:scope ext:chapterListingS;
-  form:createGenerator ext:chapterGenerator;
-  form:canRemove true;
-  form:canAdd true;
-  form:canChangeOrder true;
-  form:addLabel "Add chapter";
-  sh:group ext:mainPg;
-  sh:order 2 .
-
-##########################################################
-#  Subform: chapter
-##########################################################
-ext:chapterFormItem a form:SubForm;
-   sh:name "[SUBFORM] chapter" ;
-   form:removeLabel "Remove chapter";
-   form:includes ext:chapterTitleF;
-   form:hasFieldGroup ext:mainPg.
-
-##########################################################
-#  listing-scope: review
-##########################################################
-ext:reviewListingS a form:Scope;
-  sh:path ( [ sh:inversePath ext:reviews ] ).
-
-##########################################################
-#  Listing: review
-##########################################################
-ext:reviewsL a form:Listing;
-  sh:name "[LISTING] Reviews listing";
-  form:each ext:reviewSubform;
-  form:scope ext:reviewListingS;
-  form:createGenerator ext:reviewGenerator;
-  sh:group ext:mainPg;
-  form:canAdd false;
-  form:canRemove true;
-  sh:order 3 .
-
-##########################################################
-#  Subform: review
-##########################################################
-ext:reviewSubform a form:SubForm;
-   sh:name "[SUBFORM] Review" ;
-   form:removeLabel "Remove review";
-   form:includes ext:reviewCommentF;
-   form:hasFieldGroup ext:mainPg.
-
-##########################################################
-# Field: book title
-##########################################################
-ext:bookTitleF a form:Field ;
-    sh:name "Book title" ;
-    sh:order 1 ;
-    sh:path ext:title ;
-    form:displayType displayTypes:defaultInput ;
-    sh:group ext:mainPg .
-
-##########################################################
-# Field: chapter title
-##########################################################
-ext:chapterTitleF a form:Field ;
-    sh:name "Chapter title" ;
-    sh:order 1 ;
-    sh:path ext:title ;
-    form:displayType displayTypes:defaultInput ;
-    sh:group ext:mainPg .
-
-##########################################################
-# Field: review
-##########################################################
-ext:reviewCommentF a form:Field ;
-    sh:name "Review comment" ;
-    sh:order 1 ;
-    sh:path ext:comment ;
-    form:displayType displayTypes:defaultInput ;
-    sh:group ext:mainPg .
-
-##########################################################
-#  Generator: Chapter
-##########################################################
-ext:chapterGenerator a form:Generator;
-  form:prototype [
-    form:shape [
-      a ext:BookChapter ;
-      ext:title ""
-    ]
-  ];
-  form:dataGenerator form:addMuUuid.
-
-##########################################################
-#  Generator: Review
-##########################################################
-ext:reviewGenerator a form:Generator;
-  form:prototype [
-    form:shape [
-      a ext:Review ;
-      ext:comment ""
-    ]
-  ];
-  form:dataGenerator form:addMuUuid.
+nodes:24289e48-258f-4919-8c3e-5783a6acb4a4
+    a form:Field;
+    form:displayType displayTypes:textArea;
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Beschrijf behandeling";
+    sh:order 2;
+    sh:path ex:beschrijvingHandeling.
+nodes:848ecf41-e80f-4fdd-a37c-b0e182e03c6d
+    a form:Field;
+    form:displayType displayTypes:textArea;
+    form:help "Een goed beargumenteerde motivering.";
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Geef een motivatie op";
+    sh:order 4;
+    sh:path ex:motivatie.
+nodes:85bc9d49-8c54-4aea-9ea9-4b5cd5e1f1a8
+    a form:Field;
+    form:displayType displayTypes:date;
+    form:help "Wanneer starten de werken?";
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Start werken";
+    sh:order 5;
+    sh:path ex:startDate .
+nodes:bf9db3eb-c1fb-4603-889b-32485059653f
+    a form:Field;
+    form:displayType displayTypes:textArea;
+    form:help "Gelieve de huidige staat uitvoerig te beschrijven.";
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Beschrijf huidige staat";
+    sh:order 3;
+    sh:path ex:beschrijvingHuidigeStaat.
+nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1
+a form:Section; sh:name "Sectie"; sh:order 1 .
+emb:source-node
+    a form:Form, form:TopLevelForm;
+    form:includes
+        nodes:24289e48-258f-4919-8c3e-5783a6acb4a4,
+        nodes:848ecf41-e80f-4fdd-a37c-b0e182e03c6d,
+        nodes:85bc9d49-8c54-4aea-9ea9-4b5cd5e1f1a8,
+        nodes:bf9db3eb-c1fb-4603-889b-32485059653f;
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1 .
