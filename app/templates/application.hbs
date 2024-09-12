@@ -31,13 +31,13 @@
       </main.sidebar>
       <main.content>
         
-      <AuBodyContainer>
-        <AuBodyContainer id="content">
-          {{outlet}}
+        <AuBodyContainer>
+          <AuBodyContainer id="content" @scroll={{true}}>
+            {{outlet}}
+          </AuBodyContainer>
         </AuBodyContainer>
-      </AuBodyContainer>
-    </main.content>
-  </AuMainContainer>
+      </main.content>
+</AuMainContainer>
 </AuApp>
 
 <AuModalContainer />

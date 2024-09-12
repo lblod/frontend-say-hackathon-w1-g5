@@ -2,6 +2,10 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { validateForm } from '@lblod/ember-submission-form-fields';
 import { action } from '@ember/object';
+import {
+  graph,
+  parse
+} from "rdflib";
 
 export default class AanvragenNewController extends Controller {
   @tracked datasetTriples = [];
@@ -43,7 +47,21 @@ export default class AanvragenNewController extends Controller {
   // }
 
   @action
-  validate() {
+  async save() {
+    const triples = this.formStore.serializeDataWithAddAndDelGraph(this.graphs.sourceGraph);
+    const tempInsertStore = graph();
+    parse(triples.graph, tempInsertStore, 'http://foo', 'text/turtle');
+    const ttlInsert = tempInsertStore.toNT();
+
+    const insertQuery = `
+    INSERT DATA {
+        GRAPH <http://mu.semte.ch/graphs/public>
+        ${ttlInsert}
+     }`;
+
+    await saveInDB(insertQuery);
+    debugger
+
     const result = validateForm(this.form, {
       ...this.graphs,
       sourceNode: this.sourceNode,
@@ -52,4 +70,16 @@ export default class AanvragenNewController extends Controller {
 
     this.forceShowErrors = !result;
   }
+}
+
+async function saveInDB(query) {
+    const endpoint = '/sparql';
+    const body = encodeURI(`query=${query}&format=text/html`);
+    await fetch(endpoint,
+                { method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                  },
+                  body
+                });
 }

@@ -13,7 +13,7 @@
 
 <http://review/1> a ext:Review;
   ext:reviews <http://ember-submission-form-fields/source-node>;
-  ext:comment "What a great book!".
+  ext:comment "What a great book by the author!".
 
 <http://review/2> a ext:Review;
   ext:reviews <http://ember-submission-form-fields/source-node>;
