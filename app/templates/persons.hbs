@@ -1,0 +1,51 @@
+{{page-title "Persons"}}
+
+<h1>Person List</h1>
+
+<ul>
+  {{#each this.model as |person|}}
+    <li>
+      {{person.name}}, Age: {{person.age}}
+
+      <LinkTo @route="persons.details" @model={{person}}>details</LinkTo>
+    </li>
+
+
+    {{#if person.knows.length}}
+      <h3>Knows:</h3>
+      <ul>
+        {{#each person.knows as |knownPerson|}}
+          <li>{{knownPerson.name}}</li>
+        {{/each}}
+      </ul>
+  {{else}}
+      <p>Doesn't know anyone.</p>
+    {{/if}}
+
+
+  {{/each}}
+</ul>
+
+<br>
+
+<form {{on "submit" this.savePerson}}>
+  <label for="name">Name:</label>
+  <input id="name" type="text" value={{this.name}} {{on "input" this.updateName}}>
+
+  <label for="age">Age:</label>
+  <input id="age" type="number" value={{this.age}} {{on "input" this.updateAge}}>
+
+  <h3>Select Persons this person knows:</h3>
+  <ul>
+    {{#each this.allPersons as |person|}}
+      <li>
+        <input type="checkbox" value={{person.id}} {{on "change" (fn this.toggleKnows person)}}>
+        {{person.name}} ({{person.age}})
+      </li>
+    {{/each}}
+  </ul>
+
+  <button type="submit">Add Person</button>
+</form>
+
+{{outlet}}

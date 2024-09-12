@@ -62,7 +62,6 @@ import {
 // knowledge, that's about it. We do have a feature that can actually create and edit RDFA, but it
 // requires more setup, and is not very user friendly yet.
 export default class SayEditorComponent extends Component {
-
   @tracked controller;
   // the schema determines the allowed content in the editor. The one I gave
   // here supports pretty much all the base rich text features we have.
