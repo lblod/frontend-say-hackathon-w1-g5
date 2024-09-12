@@ -11,4 +11,10 @@ Router.map(function () {
   this.route('persons', function () {
     this.route('details', { path: '/:id/details' });
   });
+
+  this.route('aanvragen', function () {
+    this.route('overview');
+    this.route('details', { path: '/:id/details' });
+    this.route('new');
+  });
 });
