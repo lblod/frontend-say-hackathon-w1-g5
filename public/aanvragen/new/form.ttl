@@ -1,50 +1,73 @@
 @prefix : <#>.
-@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix form: <http://lblod.data.gift/vocabularies/forms/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix displayTypes: <http://lblod.data.gift/display-types/>.
 @prefix nodes: <http://data.lblod.info/form-data/nodes/>.
 @prefix emb: <http://ember-submission-form-fields/>.
 @prefix ex: <https://inventaris.onroerenderfgoed.be/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 
-nodes:05d4590b-3d08-48ea-9392-26748d598027
+nodes:038c8801-a477-49d8-bb9a-3851dcfb67ee
+a form:Field; sh:order 13; sh:path nodes:5710b269-156a-44bc-9897-82294880d595 .
+nodes:1a5d6982-6811-4c9d-88f0-29d3e9a5a74c
+a form:Field; sh:order 11; sh:path nodes:7bce9fef-0f79-4970-ac5e-d895c28fe82d.
+nodes:1c9cc0a7-4827-47af-8b16-6a998b223253
+a form:Field; sh:order 12; sh:path nodes:ee9e9639-6c28-4a97-b75f-15235277573c.
+nodes:1ceeb80a-3efa-42ce-b9db-65dbdd27a1e2
     a form:Field;
-    form:displayType displayTypes:conceptSchemeSelector;
-    form:options
-        """{"conceptScheme":"https://inventaris.onroerenderfgoed.be/conceptscheme/aanduidingsobjecten", "searchEnabled": true}""";
-    form:partOf
-    nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1, ex:detailsAanduidingsobject;
-    sh:name "Selecteer aanduidingsobject";
-    sh:order 7;
-    sh:path ex:detailsAanduidingsobject.
+    form:displayType displayTypes:textArea;
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Typologie aanduidingsobject";
+    sh:order 18;
+    sh:path ( ex:detailsAanduidingsobject ex:typologie ).
 nodes:24289e48-258f-4919-8c3e-5783a6acb4a4
     a form:Field;
     form:displayType displayTypes:textArea;
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
     sh:name "Beschrijf behandeling";
-    sh:order 3;
+    sh:order 10;
     sh:path ex:beschrijvingHandeling.
-nodes:3df7e947-fe06-406d-bc84-cb5864f44a84
+nodes:5df6493f-f435-4e8f-86c0-3e77b8a92c0a
     a form:Field;
     form:displayType displayTypes:defaultInput;
+    form:help "Functie binnen de organisatie (indien toepasbaar)";
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
-    sh:name "Toelatingsplichtige handelingen?";
-    sh:order 10;
-    sh:path ( ex:detailsAanduidingsobject ex:toelatingsplichtige_handelingen ).
-nodes:7fc9858b-5d71-4b10-992f-e6f93aaa7cde
+    sh:name "Functie binnen de organisatie";
+    sh:order 8;
+    sh:path (ex:aanvrager ex:functieAanvrager) .
+nodes:668c400d-9e23-486d-b9a6-0c4b53a430d4
     a form:Field;
     form:displayType displayTypes:defaultInput;
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
     sh:name "Naam aanduidingsobject";
-    sh:order 8;
-    sh:path ( ex:detailsAanduidingsobject foaf:name ).
+    sh:order 17;
+    sh:path ( ex:detailsAanduidingsobject foaf:name ) .
+nodes:7a362e19-bd21-4e5d-bba2-1df3544486cc
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    form:options
+        """{"conceptScheme":"https://inventaris.onroerenderfgoed.be/conceptscheme/aanduidingsobjecten", "searchEnabled": true}""";
+    sh:name "Selecteer Aanduidingsobject";
+    sh:order 16;
+    sh:path ex:detailsAanduidingsobject .
+nodes:82428c3b-dfb0-4857-86fc-b06db54d9d13
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    form:help "Email";
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Email";
+    sh:order 6;
+    sh:path (ex:aanvrager ex:email) .
+nodes:82fa0735-ab37-45b5-99ed-989b5271c0a6
+a form:Field; sh:order 14; sh:path nodes:cafb8ce0-2193-40c8-b277-8e428153fbd3 .
 nodes:848ecf41-e80f-4fdd-a37c-b0e182e03c6d
     a form:Field;
     form:displayType displayTypes:textArea;
     form:help "Een goed beargumenteerde motivering.";
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
     sh:name "Geef een motivatie op";
-    sh:order 5;
+    sh:order 15;
     sh:path ex:motivatie.
 nodes:85bc9d49-8c54-4aea-9ea9-4b5cd5e1f1a8
     a form:Field;
@@ -52,42 +75,83 @@ nodes:85bc9d49-8c54-4aea-9ea9-4b5cd5e1f1a8
     form:help "Wanneer starten de werken?";
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
     sh:name "Start werken";
-    sh:order 6;
+    sh:order 9;
     sh:path ex:startDate.
-nodes:89527b5b-ec65-4120-a442-1228e5afe746
+nodes:95618b09-b614-4ca1-a622-5a32dbf01286
     a form:Field;
     form:displayType displayTypes:defaultInput;
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
-    sh:name "Typologie";
-    sh:order 9;
-    sh:path ( ex:detailsAanduidingsobject ex:typologie ).
+    sh:name "Toelatingsplichtige handelingen?";
+    sh:order 19;
+    sh:path ( ex:detailsAanduidingsobject ex:toelatingsplichtige_handelingen ) .
+nodes:99c042c7-7a94-4cde-925a-a64aaaf84fb2
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    form:help "Organisatie of bedrijf (indien toepasbaar)";
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Organisatie";
+    sh:order 7;
+    sh:path (ex:aanvrager ex:naamOrganisatie) .
+nodes:af51891f-43e6-43ed-9cff-e049c2d63ca3
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    form:help "Familienaam van de aanvrager";
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Familienaam aanvrager";
+    sh:order 4;
+    sh:path (ex:aanvrager ex:achternaam).
 nodes:b4b10fe6-b896-4c1a-a533-1477f4ba6d13
     a form:Field;
     form:displayType displayTypes:defaultInput;
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
-    sh:name "Naam aanvrager";
+    sh:name "Voornaam aanvrager";
     sh:order 2;
     sh:path ( ex:aanvrager ex:voornaam ).
+nodes:bb7c4bc5-a64e-4cd6-9bb7-6a101686ab1d
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    form:help "Telefoonnummer";
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Telefoonnummer";
+    sh:order 5;
+    sh:path ( ex:aanvrager ex:telefoon ).
+
 nodes:bf9db3eb-c1fb-4603-889b-32485059653f
     a form:Field;
     form:displayType displayTypes:textArea;
     form:help "Gelieve de huidige staat uitvoerig te beschrijven.";
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
     sh:name "Beschrijf huidige staat";
-    sh:order 4;
+    sh:order 14;
     sh:path ex:beschrijvingHuidigeStaat.
+nodes:cb3be8e2-7460-44e2-b943-2f6483441970
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    form:help "Rijksregisternummer";
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "RijksregisterNummer";
+    sh:order 3;
+    sh:path ( ex:aanvrager ex:rijksregisternummer ) .
+
+
 nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1
-a form:Section; sh:name "Sectie"; sh:order 1 .
+a form:Section; form:help "Aanvraag"; sh:name "Aanvraag"; sh:order 1 .
 emb:source-node
     a form:Form, form:TopLevelForm;
     form:includes
-        nodes:05d4590b-3d08-48ea-9392-26748d598027,
+        nodes:1ceeb80a-3efa-42ce-b9db-65dbdd27a1e2,
         nodes:24289e48-258f-4919-8c3e-5783a6acb4a4,
-        nodes:3df7e947-fe06-406d-bc84-cb5864f44a84,
-        nodes:7fc9858b-5d71-4b10-992f-e6f93aaa7cde,
+        nodes:5df6493f-f435-4e8f-86c0-3e77b8a92c0a,
+        nodes:668c400d-9e23-486d-b9a6-0c4b53a430d4,
+        nodes:7a362e19-bd21-4e5d-bba2-1df3544486cc,
+        nodes:82428c3b-dfb0-4857-86fc-b06db54d9d13,
         nodes:848ecf41-e80f-4fdd-a37c-b0e182e03c6d,
         nodes:85bc9d49-8c54-4aea-9ea9-4b5cd5e1f1a8,
-        nodes:89527b5b-ec65-4120-a442-1228e5afe746,
+        nodes:95618b09-b614-4ca1-a622-5a32dbf01286,
+        nodes:99c042c7-7a94-4cde-925a-a64aaaf84fb2,
+        nodes:af51891f-43e6-43ed-9cff-e049c2d63ca3,
         nodes:b4b10fe6-b896-4c1a-a533-1477f4ba6d13,
-        nodes:bf9db3eb-c1fb-4603-889b-32485059653f;
+        nodes:bb7c4bc5-a64e-4cd6-9bb7-6a101686ab1d,
+        nodes:bf9db3eb-c1fb-4603-889b-32485059653f,
+        nodes:cb3be8e2-7460-44e2-b943-2f6483441970;
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1 .
