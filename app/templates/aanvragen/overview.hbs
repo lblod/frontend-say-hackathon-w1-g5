@@ -42,11 +42,11 @@
           {{#each @model.data as |aanvraag|}}
             <tr>
               <td>{{aanvraag.id}}</td>
-              <td>{{aanvraag.beschrijvingHandeling}}</td>
-              <td>{{aanvraag.beschrijvingHuidigeStaat}}</td>
-              <td>{{aanvraag.motivatie}}</td>
-              <td>{{aanvraag.aanvrager}}</td>
-              <td>{{aanvraag.contactpersoon}}</td>
+              <td>{{aanvraag.attributes.beschrijvingHandeling}}</td>
+              <td>{{aanvraag.attributes.beschrijvingHuidigeStaat}}</td>
+              <td>{{aanvraag.attributes.motivatie}}</td>
+              <td>{{aanvraag.attributes.aanvrager}}</td>
+              <td>{{aanvraag.attributes.contactpersoon}}</td>
               <td>{{aanvraag.detailsAanduidingsobject}}</td>
               <td>{{aanvraag.attributes.startdate}}</td>
               <td>{{aanvraag.attributes.enddate}}</td>
