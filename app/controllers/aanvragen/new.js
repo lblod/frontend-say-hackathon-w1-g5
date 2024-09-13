@@ -51,6 +51,7 @@ export default class AanvragenNewController extends Controller {
     const triples = this.formStore.serializeDataWithAddAndDelGraph(this.graphs.sourceGraph);
     const tempInsertStore = graph();
     parse(triples.graph, tempInsertStore, 'http://foo', 'text/turtle');
+    parse(triples.additions, tempInsertStore, 'http://foo', 'text/turtle');
     const ttlInsert = tempInsertStore.toNT();
 
     const insertQuery = `
@@ -60,8 +61,6 @@ export default class AanvragenNewController extends Controller {
      }`;
 
     await saveInDB(insertQuery);
-    debugger
-
     const result = validateForm(this.form, {
       ...this.graphs,
       sourceNode: this.sourceNode,
@@ -69,6 +68,8 @@ export default class AanvragenNewController extends Controller {
     });
 
     this.forceShowErrors = !result;
+
+    alert(`Uw referentie: ${this.sourceNode}`);
   }
 }
 

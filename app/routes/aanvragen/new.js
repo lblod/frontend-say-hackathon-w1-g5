@@ -8,9 +8,7 @@ const FORM_GRAPHS = {
   sourceGraph: new NamedNode(`http://data.lblod.info/sourcegraph`),
 };
 
-const SOURCE_NODE = new NamedNode(
-  'https://inventaris.onroerenderfgoed.be/#Aanvraag1'
-);
+
 
 const FORM = new Namespace('http://lblod.data.gift/vocabularies/forms/');
 const RDF = new Namespace('http://www.w3.org/1999/02/22-rdf-syntax-ns#');
@@ -20,7 +18,7 @@ export default class AanvragenNewRoute extends Route {
     const formName = 'new';
     let [formTtl, metaTtl, dataTtl] = await Promise.all([
       fetchForm(formName),
-      fetchFormMeta(formName), 
+      fetchFormMeta(formName),
       fetchFormData(formName),
     ]);
 
@@ -38,13 +36,17 @@ export default class AanvragenNewRoute extends Route {
 
     this.form = form;
     this.formStore = formStore;
+
+    const sourceNode = new NamedNode(`https://aanvragen.onroerenderfgoed.be/aanduidingsobjecten/toelatingsaanvragen/${randomId()}`);
+    formStore.parse(`${sourceNode} a <https://inventaris.onroerenderfgoed.be/aanvraag>.`, FORM_GRAPHS.sourceGraph, 'text/turtle');
+
     return {
       formName,
       form,
       formStore,
       title: 'Nieuwe toelatingsaanvraag',
       graphs: FORM_GRAPHS,
-      sourceNode: SOURCE_NODE,
+      sourceNode: sourceNode,
     };
   }
 
@@ -81,4 +83,10 @@ async function fetchFormData(formName) {
 
 function getFormDataPath(formName, fileName) {
   return `/aanvragen/${formName}/${fileName}`;
+}
+
+
+function randomId() {
+  const randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
+  return randomNumber;
 }
