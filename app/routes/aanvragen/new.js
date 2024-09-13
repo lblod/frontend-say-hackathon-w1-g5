@@ -50,7 +50,7 @@ export default class AanvragenNewRoute extends Route {
       {
         subject: sourceNode,
         predicate: new NamedNode('http://mu.semte.ch/vocabularies/core/uuid'),
-        object: `"${randomIdentifier}"`,
+        object: `${randomIdentifier}`,
         graph: FORM_GRAPHS.sourceGraph
       }
     ];
