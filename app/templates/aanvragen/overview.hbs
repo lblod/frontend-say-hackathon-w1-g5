@@ -36,7 +36,7 @@
           </tr>
         </thead>
         <tbody>
-          {{#each @model.data as |aanvraag|}}
+          {{#each @model.aanvraag.data as |aanvraag|}}
             <tr>
               <td>{{aanvraag.attributes.beschrijvingHandeling}}</td>
               <td>{{aanvraag.attributes.beschrijvingHuidigeStaat}}</td>
@@ -49,7 +49,7 @@
         </tbody>
       </table>
       Informatie over de besluiten
-      <table class="au-c-table"></table>
+      <table class="au-c-table">
         <thead>
           <tr>
             <th>Source</th>
@@ -61,7 +61,7 @@
           </tr>
         </thead>
         <tbody>
-          {{#each @model.data as |aanvraag|}}
+          {{#each @model.besluit.data as |besluit|}}
             <tr>
               <td>{{besluit.attributes.source}}</td>
               <td>{{besluit.attributes.identifier}}</td>
@@ -73,8 +73,6 @@
           {{/each}}
         </tbody>
       </table>
-
-      
     </div>
   </div>
   {{outlet}}
