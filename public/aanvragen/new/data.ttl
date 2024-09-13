@@ -9,7 +9,7 @@
         ex:motivatie "Om verder schade tegen te gaan moet de oude waterleiding vervangen worden"^^xsd:string ;
         ex:startDate "2024-10-15"^^xsd:date ;
         ex:endDate "2024-12-15"^^xsd:date ;
-        ex:detailsAanduidingsobject ex:Aanduidingsobject1 ;
+        ex:detailsAanduidingsobject <https://inventaris.onroerenderfgoed.be/aanduidingsobjecten/10260> ;
         ex:aanvrager ex:Aanvrager1 ;
         ex:contactpersoon ex:Contactpersoon1 .
 
@@ -44,3 +44,28 @@
         ex:gemeente "Antwerpen"^^xsd:string ;
         ex:telefoon "+3212345679"^^xsd:string ;
         ex:email "marie.servais@example.com"^^xsd:string .
+
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix mu: <http://mu.semte.ch/vocabularies/core/> .
+@prefix ns1: <https://inventaris.onroerenderfgoed.be/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://inventaris.onroerenderfgoed.be/aanduidingsobjecten/10260> a ns1:Aanduidingsobject ;
+    mu:uuid "698c9dd1-204d-4769-899c-99412ff68cae" ;
+    dcterms:description "Inventarisatie Demer- en Laakvallei tussen Aarschot en Werchter" ;
+    dcterms:identifier 10260 ;
+    dcterms:issued "2014-02-04"^^xsd:date ;
+    dcterms:spatial "Aarschot, Gelrode (Aarschot), Betekom (Begijnendijk), Rotselaar, Werchter (Rotselaar), Tremelo (Tremelo)" ;
+    foaf:name "Demer- en Laakvallei tussen Aarschot en Werchter" ;
+    ns1:besluiten_identifier "5333" ;
+    ns1:dataverantwoordelijke "Agentschap Onroerend Erfgoed" ;
+    ns1:deelgemeente "Aarschot, Betekom, Gelrode, Rotselaar, Tremelo, Werchter" ;
+    ns1:gemeente "Aarschot, Begijnendijk, Rotselaar, Tremelo" ;
+    ns1:nummers "4.05/20000/185.1" ;
+    ns1:provincie "Vlaams-Brabant" ;
+    ns1:toelatingsplichtige_handelingen "nee" ;
+    ns1:type "Vastgesteld landschapsatlasrelict" ;
+    ns1:typologie "agrarische landschappen, dijken, donken, heiden, hoeven, kapellen (klein erfgoed), landhuizen, loofbossen, meanders, microreliëfvormen, open landschappen, restheuvels, rivieren, valleien" .
