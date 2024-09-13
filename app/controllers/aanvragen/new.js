@@ -50,7 +50,7 @@ export default class AanvragenNewController extends Controller {
   async save() {
     const triples = this.formStore.serializeDataWithAddAndDelGraph(this.graphs.sourceGraph);
     const tempInsertStore = graph();
-    parse(triples.graph, tempInsertStore, 'http://foo', 'text/turtle');
+    //parse(triples.graph, tempInsertStore, 'http://foo', 'text/turtle');
     parse(triples.additions, tempInsertStore, 'http://foo', 'text/turtle');
     const ttlInsert = tempInsertStore.toNT();
 

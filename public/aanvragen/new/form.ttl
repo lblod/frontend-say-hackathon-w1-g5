@@ -1,11 +1,22 @@
 @prefix : <#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @prefix form: <http://lblod.data.gift/vocabularies/forms/>.
 @prefix sh: <http://www.w3.org/ns/shacl#>.
 @prefix displayTypes: <http://lblod.data.gift/display-types/>.
 @prefix nodes: <http://data.lblod.info/form-data/nodes/>.
 @prefix emb: <http://ember-submission-form-fields/>.
-@prefix ex: <https://inventaris.onroerenderfgoed.be/#>.
+@prefix ex: <https://inventaris.onroerenderfgoed.be/>.
 
+nodes:05d4590b-3d08-48ea-9392-26748d598027
+    a form:Field;
+    form:displayType displayTypes:conceptSchemeSelector;
+    form:options
+        """{"conceptScheme":"https://inventaris.onroerenderfgoed.be/conceptscheme/aanduidingsobjecten", "searchEnabled": true}""";
+    form:partOf
+    nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1, ex:detailsAanduidingsobject;
+    sh:name "Selecteer aanduidingsobject";
+    sh:order 7;
+    sh:path ex:detailsAanduidingsobject.
 nodes:24289e48-258f-4919-8c3e-5783a6acb4a4
     a form:Field;
     form:displayType displayTypes:textArea;
@@ -13,6 +24,20 @@ nodes:24289e48-258f-4919-8c3e-5783a6acb4a4
     sh:name "Beschrijf behandeling";
     sh:order 3;
     sh:path ex:beschrijvingHandeling.
+nodes:3df7e947-fe06-406d-bc84-cb5864f44a84
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Toelatingsplichtige handelingen?";
+    sh:order 10;
+    sh:path ( ex:detailsAanduidingsobject ex:toelatingsplichtige_handelingen ).
+nodes:7fc9858b-5d71-4b10-992f-e6f93aaa7cde
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Naam aanduidingsobject";
+    sh:order 8;
+    sh:path ( ex:detailsAanduidingsobject foaf:name ).
 nodes:848ecf41-e80f-4fdd-a37c-b0e182e03c6d
     a form:Field;
     form:displayType displayTypes:textArea;
@@ -29,13 +54,20 @@ nodes:85bc9d49-8c54-4aea-9ea9-4b5cd5e1f1a8
     sh:name "Start werken";
     sh:order 6;
     sh:path ex:startDate.
+nodes:89527b5b-ec65-4120-a442-1228e5afe746
+    a form:Field;
+    form:displayType displayTypes:defaultInput;
+    form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
+    sh:name "Typologie";
+    sh:order 9;
+    sh:path ( ex:detailsAanduidingsobject ex:typologie ).
 nodes:b4b10fe6-b896-4c1a-a533-1477f4ba6d13
     a form:Field;
     form:displayType displayTypes:defaultInput;
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
     sh:name "Naam aanvrager";
     sh:order 2;
-    sh:path (ex:aanvrager ex:voornaam ) .
+    sh:path ( ex:aanvrager ex:voornaam ).
 nodes:bf9db3eb-c1fb-4603-889b-32485059653f
     a form:Field;
     form:displayType displayTypes:textArea;
@@ -49,9 +81,13 @@ a form:Section; sh:name "Sectie"; sh:order 1 .
 emb:source-node
     a form:Form, form:TopLevelForm;
     form:includes
+        nodes:05d4590b-3d08-48ea-9392-26748d598027,
         nodes:24289e48-258f-4919-8c3e-5783a6acb4a4,
+        nodes:3df7e947-fe06-406d-bc84-cb5864f44a84,
+        nodes:7fc9858b-5d71-4b10-992f-e6f93aaa7cde,
         nodes:848ecf41-e80f-4fdd-a37c-b0e182e03c6d,
         nodes:85bc9d49-8c54-4aea-9ea9-4b5cd5e1f1a8,
+        nodes:89527b5b-ec65-4120-a442-1228e5afe746,
         nodes:b4b10fe6-b896-4c1a-a533-1477f4ba6d13,
         nodes:bf9db3eb-c1fb-4603-889b-32485059653f;
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1 .
