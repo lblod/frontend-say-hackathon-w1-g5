@@ -27,7 +27,6 @@
       <table class="au-c-table">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Beschrijving Handeling</th>
             <th>Beschrijving Huidige Staat</th>
             <th>Motivatie</th>
@@ -41,7 +40,6 @@
         <tbody>
           {{#each @model.data as |aanvraag|}}
             <tr>
-              <td>{{aanvraag.id}}</td>
               <td>{{aanvraag.attributes.beschrijvingHandeling}}</td>
               <td>{{aanvraag.attributes.beschrijvingHuidigeStaat}}</td>
               <td>{{aanvraag.attributes.motivatie}}</td>
