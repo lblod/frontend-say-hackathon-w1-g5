@@ -15,13 +15,13 @@
           <AuHeading @skin="2">{{this.title}}</AuHeading>
         </Group>
         <Group>
-              <AuLink
-                @route="aanvragen.new"
-                @icon="add"
-                @skin="button"
-              >
-                Nieuwe aanvrag
-              </AuLink>
+          <AuLink
+            @route="aanvragen.new"
+            @icon="add"
+            @skin="button"
+          >
+            Nieuwe aanvrag
+          </AuLink>
         </Group>
       </AuToolbar>
       <table class="au-c-table">
@@ -38,10 +38,10 @@
         <tbody>
           {{#each @model.data as |aanvraag|}}
             <tr>
-              <td>{{aanvraag.attributes.beschrijvingHandeling}}</td>
-              <td>{{aanvraag.attributes.beschrijvingHuidigeStaat}}</td>
+              <td>{{aanvraag.attributes.beschrijvinghandeling}}</td>
+              <td>{{aanvraag.attributes.beschrijvinghuidigestaat}}</td>
               <td>{{aanvraag.attributes.motivatie}}</td>
-              <td>{{aanvraag.detailsAanduidingsobject}}</td>
+              <td>{{aanvraag.detailsaanduidingsobject}}</td>
               <td>{{aanvraag.attributes.startdate}}</td>
               <td>{{aanvraag.attributes.enddate}}</td>
             </tr>
