@@ -24,19 +24,30 @@
               </AuLink>
         </Group>
       </AuToolbar>
-      INSERT TABLE HERE
       <table class="au-c-table">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Startdatum</th>
-            <th>Einddatum</th>
+            <th>Beschrijving Handeling</th>
+            <th>Beschrijving Huidige Staat</th>
+            <th>Motivatie</th>
+            <th>Aanvrager</th>
+            <th>Contactpersoon</th>
+            <th>Details Aanduidingsobject</th>
+            <th>Start Datum</th>
+            <th>Eind Datum</th>
           </tr>
         </thead>
         <tbody>
           {{#each @model.data as |aanvraag|}}
             <tr>
               <td>{{aanvraag.id}}</td>
+              <td>{{aanvraag.beschrijvingHandeling}}</td>
+              <td>{{aanvraag.beschrijvingHuidigeStaat}}</td>
+              <td>{{aanvraag.motivatie}}</td>
+              <td>{{aanvraag.aanvrager}}</td>
+              <td>{{aanvraag.contactpersoon}}</td>
+              <td>{{aanvraag.detailsAanduidingsobject}}</td>
               <td>{{aanvraag.attributes.startdate}}</td>
               <td>{{aanvraag.attributes.enddate}}</td>
             </tr>
