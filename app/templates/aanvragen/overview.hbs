@@ -25,12 +25,23 @@
         </Group>
       </AuToolbar>
       INSERT TABLE HERE
-      <table>
-      {{#each @model.data as |aanvraag|}}
-        <tr>
-          <td>{{rental.id}}</td>
-        </tr>
-      {{/each}}
+      <table class="au-c-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Startdatum</th>
+            <th>Einddatum</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each @model.data as |aanvraag|}}
+            <tr>
+              <td>{{aanvraag.id}}</td>
+              <td>{{aanvraag.attributes.startdate}}</td>
+              <td>{{aanvraag.attributes.enddate}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
       </table>
     </div>
   </div>
