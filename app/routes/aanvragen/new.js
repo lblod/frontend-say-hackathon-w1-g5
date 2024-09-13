@@ -37,8 +37,28 @@ export default class AanvragenNewRoute extends Route {
     this.form = form;
     this.formStore = formStore;
 
-    const sourceNode = new NamedNode(`https://aanvragen.onroerenderfgoed.be/aanduidingsobjecten/toelatingsaanvragen/${randomId()}`);
-    formStore.parse(`${sourceNode} a <https://inventaris.onroerenderfgoed.be/aanvraag>.`, FORM_GRAPHS.sourceGraph, 'text/turtle');
+    const randomIdentifier = randomId();
+
+    const sourceNode = new NamedNode(`https://aanvragen.onroerenderfgoed.be/aanduidingsobjecten/toelatingsaanvragen/${randomIdentifier}`);
+    const triples = [
+      {
+        subject: sourceNode,
+        predicate: new NamedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'),
+        object: new NamedNode("https://inventaris.onroerenderfgoed.be/aanvraag"),
+        graph: FORM_GRAPHS.sourceGraph
+      },
+      {
+        subject: sourceNode,
+        predicate: new NamedNode('http://mu.semte.ch/vocabularies/core/uuid'),
+        object: `"${randomIdentifier}"`,
+        graph: FORM_GRAPHS.sourceGraph
+      }
+    ];
+
+    // formStore.parse(`${sourceNode} a <https://inventaris.onroerenderfgoed.be/aanvraag>.`, FORM_GRAPHS.sourceGraph, 'text/turtle');
+    // formStore.parse(`${sourceNode} <http://mu.semte.ch/vocabularies/core/uuid> "${randomIdentifier}".`, FORM_GRAPHS.sourceGraph, 'text/turtle');
+
+    formStore.addAll(triples);
 
     return {
       formName,
