@@ -48,6 +48,33 @@
           {{/each}}
         </tbody>
       </table>
+      Informatie over de besluiten
+      <table class="au-c-table"></table>
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>ID</th>
+            <th>Volgt uit</th>
+            <th>Voorafgaand</th>
+            <th>Rechtsgevolgen</th>
+            <th>Heeft Onderdelen</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each @model.data as |aanvraag|}}
+            <tr>
+              <td>{{besluit.attributes.source}}</td>
+              <td>{{besluit.attributes.identifier}}</td>
+              <td>{{besluit.attributes.follows}}</td>
+              <td>{{besluit.precedes}}</td>
+              <td>{{besluit.attributes.rechtsgevolgen}}</td>
+              <td>{{besluit.attributes.hasPart}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+
+      
     </div>
   </div>
   {{outlet}}
