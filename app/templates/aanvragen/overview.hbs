@@ -25,6 +25,13 @@
         </Group>
       </AuToolbar>
       INSERT TABLE HERE
+      <table>
+      {{#each @model.data as |aanvraag|}}
+        <tr>
+          <td>{{rental.id}}</td>
+        </tr>
+      {{/each}}
+      </table>
     </div>
   </div>
   {{outlet}}
